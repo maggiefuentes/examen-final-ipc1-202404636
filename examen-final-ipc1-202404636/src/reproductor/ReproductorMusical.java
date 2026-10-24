@@ -20,5 +20,12 @@ public class ReproductorMusical {
         c2.reproducir();
 
         c3.reproducir();
+
+        Playlist playlist = new Playlist();
+        playlist.agregarCancion(c1);
+        playlist.agregarCancion(c2);
+        playlist.agregarCancion(c3);
+
+        playlist.mostrarPlaylist();
     }
 }
