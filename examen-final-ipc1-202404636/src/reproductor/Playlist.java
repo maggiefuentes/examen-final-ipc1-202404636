@@ -79,4 +79,57 @@ public class Playlist {
             aux = aux.getSiguiente();
         }
     }
+
+    public Cancion siguiente() {
+        if (actual == null || actual.getSiguiente() == null) {
+            return null;
+        }
+        actual = actual.getSiguiente();
+        actual.getDato().reproducir();
+        return actual.getDato();
+    }
+
+    public Cancion anterior() {
+        if (actual == null || actual.getAnterior() == null) {
+            return null;
+        }
+        actual = actual.getAnterior();
+        actual.getDato().reproducir();
+        return actual.getDato();
+    }
+
+    public void eliminarActual() {
+        if (actual == null) {
+            return;
+        }
+        NodoDoble eliminado = actual;
+        NodoDoble prev = eliminado.getAnterior();
+        NodoDoble next = eliminado.getSiguiente();
+        if (prev == null && next == null) {
+            cabeza = null;
+            cola = null;
+            actual = null;
+        } else if (prev == null) {
+            cabeza = next;
+            cabeza.SetAnterior(null);
+            actual = cabeza;
+        } else if (next == null) {
+            cola = prev;
+            cola.setSiguiente(null);
+            actual = cola;
+        } else {
+            prev.setSiguiente(next);
+            next.SetAnterior(prev);
+            actual = next;
+        }
+
+        eliminado.SetAnterior(null);
+        eliminado.setSiguiente(null);
+        eliminado.setDato(null);
+
+        tamanio--;
+        if (tamanio < 0) {
+            tamanio = 0;
+        }
+    }
 }

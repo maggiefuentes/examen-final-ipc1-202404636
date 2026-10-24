@@ -26,6 +26,15 @@ public class ReproductorMusical {
         playlist.agregarCancion(c2);
         playlist.agregarCancion(c3);
 
+        System.out.println("Playlist inicial:");
+        playlist.mostrarPlaylist();
+        playlist.siguiente();
+        playlist.siguiente();
+        playlist.anterior();
+        playlist.eliminarActual();
+
+        System.out.println("Playlist final:");
+
         playlist.mostrarPlaylist();
     }
 }
